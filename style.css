@@ -1,0 +1,39 @@
+@import url('https://fonts.cdnfonts.com/css/5yearsoldfont');
+/* Resetta il margine e il padding di base */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: '5yearsoldfont', sans-serif;
+}
+
+/* Stile per la pagina */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+}
+
+/* Contenitore centrale */
+.container {
+    max-width: 600px;
+    padding: 20px;
+}
+
+/* Titolo */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #ff6f61;
+}
+
+/* GIF animata */
+.construction-gif {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
