@@ -30,8 +30,16 @@ header {
     cursor: default;
 }
 
-#clock{
+#countdown{
     text-align: right;
+}
+
+#countdown span{
+letter-spacing: 0.5rem;
+}
+
+.unit {
+  font-weight: lighter;
 }
 
 .separator {
@@ -74,15 +82,15 @@ header {
   .scroll {
     white-space: nowrap;
     gap: 2rem;
-    font-size: 3vw;
   }
 
   .scroll div {
     display: flex;
+    background-color: yellow;
   }
 
   .scrollRightToLeft {
-    animation: scrollRightToLeft 200s infinite linear;
+    animation: scrollRightToLeft 300s infinite linear;
   }
   
   @keyframes  scrollRightToLeft {
@@ -95,7 +103,7 @@ header {
   }
   
   .scrollLeftToRight {
-    animation: scrollLeftToRight 200s infinite linear;
+    animation: scrollLeftToRight 300s infinite linear;
   }
   
   @keyframes  scrollLeftToRight {
@@ -147,5 +155,8 @@ header {
 @media (min-width: 1025px) {
   .description {
       line-height: 4rem; /* Line-height più ampio per schermi grandi */
+  }
+  .scroll div{
+    font-size: 1.5vw;
   }
 }

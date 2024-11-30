@@ -1,13 +1,20 @@
 // Seleziona il contenitore principale
-const scrollDivUpper = document.getElementById('scroll-upper');
-//const scrollDivUnder = document.getElementById('scroll-under');
-scrollDivUpper.classList.add('active')
-//scrollDivUnder.classList.add('active')
+const scrollDiv = document.getElementById('scroll');
+
+// Aggiungi l'evento "mouseenter" per attivare l'animazione
+scrollDiv.addEventListener('mouseenter', () => {
+    scrollDiv.classList.add('active'); // Aggiungi la classe active
+});
+
+// Aggiungi l'evento "mouseleave" per fermare l'animazione
+scrollDiv.addEventListener('mouseleave', () => {
+    scrollDiv.classList.remove('active'); // Rimuovi la classe active
+});
 
 // Logica precedente per creare il contenuto
 const text = "Website under construction ";
 const vw = window.innerWidth;
-const scrollFontSize = parseFloat(getComputedStyle(scrollDivUpper).fontSize);
+const scrollFontSize = parseFloat(getComputedStyle(scrollDiv).fontSize);
 const repetitions = Math.ceil(vw / scrollFontSize) + 1;
 
 const createScrollingDiv = (directionClass, repeatedText) => {
@@ -23,11 +30,8 @@ const createScrollingDiv = (directionClass, repeatedText) => {
     return divElement;
 };
 
-for (let i = 0; i < 1; i++) {
+for (let i = 0; i < 5; i++) {
     const directionClass = i % 2 === 0 ? 'scrollRightToLeft' : 'scrollLeftToRight';
-    const scrollingDivUpper = createScrollingDiv(directionClass, text.repeat(repetitions));
-    //const scrollingDivUnder = createScrollingDiv(directionClass, text.repeat(repetitions));
-    scrollDivUpper.appendChild(scrollingDivUpper);
-    //scrollDivUnder.appendChild(scrollingDivUnder);
-
+    const scrollingDiv = createScrollingDiv(directionClass, text.repeat(repetitions));
+    scrollDiv.appendChild(scrollingDiv);
 }
