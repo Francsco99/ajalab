@@ -1,7 +1,8 @@
 /* Variabili CSS */
 :root {
-    --primary-text-color: #000000; /* Nero */
-    --secondary-text-color: rgb(0, 49, 215); /* Blu */
+    --secondary-text-color: #000000; /* Nero */
+    --primary-text-color: #0224E0; /* Blu */
+    --title-text-color: #011baa;
 }
 
 /* Stile generale */
@@ -10,7 +11,6 @@ body {
     margin-left: 1rem;
     margin-right: 1rem;
     padding: 0;
-    color: var(--primary-text-color);
 }
 
 header {
@@ -22,10 +22,10 @@ header {
 }
 
 .header-link {
-    font-size: 0.75rem;
+    font-size: clamp(0.5rem, 1vw, 1vw);
     text-transform: uppercase;
     font-weight: bold;
-    color: var(--primary-text-color);
+    color: var(--secondary-text-color);
     text-decoration: none;
     cursor: default;
 }
@@ -36,18 +36,35 @@ header {
 
 .separator {
     height: 1px;
-    background-color: var(--secondary-text-color);
+    background-color: var(--primary-text-color);
     margin: 0.3rem 0;
 }
 
 .title {
-    color: var(--secondary-text-color);
+    color: var(--title-text-color);
     font-size: calc(90vw / 4);
     text-transform: uppercase;
     font-weight: bold;
     white-space: nowrap;
     text-align: center;
     margin-top: 0.5rem;
+    margin-bottom: -0.5rem;
+}
+
+.description{
+  line-height: clamp(0.5rem, 4rem, 4rem);
+  font-size: clamp(3rem, 4.5vw, 4.5vw);
+  font-weight: bold;
+  letter-spacing: -0.1rem;
+}
+/* Stile per il contenuto della descrizione */
+.description p {
+  color: var(--primary-text-color);
+  margin-bottom: 0;
+}
+
+.description .highlight {
+  color: var(--secondary-text-color);
 }
 
 .container {
@@ -62,12 +79,10 @@ header {
     font-size: 3vw;
   }
 
-
   .scroll div {
     display: flex;
   }
 
-  
   .scrollRightToLeft {
     animation: scrollRightToLeft 200s infinite linear;
   }
@@ -95,9 +110,6 @@ header {
   }
 
   /* Stile delle righe */
-.scroll div {
-    color: var(--primary-text-color); /* Colore di default */
-}
 
 /* Alterna i colori */
 .scroll div:nth-child(even) {
