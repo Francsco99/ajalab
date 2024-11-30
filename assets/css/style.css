@@ -22,7 +22,7 @@ header {
 }
 
 .header-link {
-    font-size: clamp(0.5rem, 1vw, 1vw);
+    font-size: clamp(1rem, 1vw, 1vw);
     text-transform: uppercase;
     font-weight: bold;
     color: var(--secondary-text-color);
@@ -48,12 +48,10 @@ header {
     white-space: nowrap;
     text-align: center;
     margin-top: 0.5rem;
-    margin-bottom: -0.5rem;
 }
 
 .description{
-  line-height: clamp(0.5rem, 4rem, 4rem);
-  font-size: clamp(3rem, 4.5vw, 4.5vw);
+  font-size: clamp(2.3rem, 4.5vw, 4.5vw);
   font-weight: bold;
   letter-spacing: -0.1rem;
 }
@@ -129,4 +127,25 @@ header {
 .scroll.active .scrollRightToLeft,
 .scroll.active .scrollLeftToRight {
     animation-play-state: running; /* Animazione attiva quando hover */
+}
+
+/* Media query per schermi piccoli */
+@media (max-width: 768px) {
+  .description {
+      line-height: 2.6rem; /* Riduci line-height per schermi piccoli */
+  }
+}
+
+/* Media query per schermi medi */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .description {
+      line-height: 2.8rem; /* Line-height moderato per schermi medi */
+  }
+}
+
+/* Media query per schermi grandi */
+@media (min-width: 1025px) {
+  .description {
+      line-height: 4rem; /* Line-height più ampio per schermi grandi */
+  }
 }
