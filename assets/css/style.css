@@ -1,0 +1,120 @@
+/* Variabili CSS */
+:root {
+    --primary-text-color: #000000; /* Nero */
+    --secondary-text-color: rgb(0, 49, 215); /* Blu */
+}
+
+/* Stile generale */
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 0;
+    color: var(--primary-text-color);
+}
+
+header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.header-link {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--primary-text-color);
+    text-decoration: none;
+    cursor: default;
+}
+
+#clock{
+    text-align: right;
+}
+
+.separator {
+    height: 1px;
+    background-color: var(--secondary-text-color);
+    margin: 0.3rem 0;
+}
+
+.title {
+    color: var(--secondary-text-color);
+    font-size: calc(90vw / 4);
+    text-transform: uppercase;
+    font-weight: bold;
+    white-space: nowrap;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .scroll {
+    white-space: nowrap;
+    gap: 2rem;
+    font-size: 3vw;
+  }
+
+
+  .scroll div {
+    display: flex;
+  }
+
+  
+  .scrollRightToLeft {
+    animation: scrollRightToLeft 200s infinite linear;
+  }
+  
+  @keyframes  scrollRightToLeft {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .scrollLeftToRight {
+    animation: scrollLeftToRight 200s infinite linear;
+  }
+  
+  @keyframes  scrollLeftToRight {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
+
+  /* Stile delle righe */
+.scroll div {
+    color: var(--primary-text-color); /* Colore di default */
+}
+
+/* Alterna i colori */
+.scroll div:nth-child(even) {
+    color: var(--primary-text-color);
+}
+
+.scroll div:nth-child(odd) {
+    color: var(--secondary-text-color);
+}
+
+/* Animazioni */
+.scrollRightToLeft,
+.scrollLeftToRight {
+    animation-play-state: paused; /* Animazione ferma di default */
+}
+
+.scroll.active .scrollRightToLeft,
+.scroll.active .scrollLeftToRight {
+    animation-play-state: running; /* Animazione attiva quando hover */
+}
