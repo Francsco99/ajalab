@@ -1,0 +1,166 @@
+/* Variabili CSS */
+:root {
+    --secondary-text-color: #000000; /* Nero */
+    --primary-text-color: #0011A5; /* Blu */
+    --title-text-color: #ffff; /* Bianco */
+}
+
+/* Corpo principale */
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0 1rem;
+    padding: 0;
+    background: radial-gradient(circle, var(--secondary-text-color), var(--primary-text-color));
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.header-link {
+    font-size: max(0.5rem, 1.3vw);
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--title-text-color);
+    text-decoration: none;
+    cursor: default;
+}
+
+/* Separator */
+.separator {
+    height: 6px;
+    margin-top: 1rem;
+    background-color: var(--title-text-color);
+}
+
+/* Titolo */
+.title {
+    max-width: 95vw;
+    height: auto;
+}
+
+/* Custom Rectangle */
+.custom-rectangle {
+    max-width: 70vw;
+    height: auto;
+    background-color: var(--title-text-color);
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    position: relative;
+    left: -1.5rem;
+    padding: 1.5rem;
+    margin-bottom: 10rem;
+}
+
+/* Descrizione */
+.description {
+    font-size: 4.5vw;
+    font-weight: bold;
+    letter-spacing: -0.1rem;
+}
+
+.description p {
+    color: var(--primary-text-color);
+    margin-bottom: 0;
+}
+
+.description .highlight {
+    color: var(--secondary-text-color);
+}
+
+/* Scroll Containers */
+.scroll-container {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.scroll {
+    white-space: nowrap;
+    gap: 2rem;
+}
+
+.scroll div {
+    display: flex;
+    background-color: yellow;
+}
+
+.scroll p {
+    text-transform: uppercase;
+    font-weight: bold;
+    background: radial-gradient(circle, var(--secondary-text-color), var(--primary-text-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Scroll Animations */
+.scrollRightToLeft {
+    animation: scrollRightToLeft 300s infinite linear;
+}
+
+@keyframes scrollRightToLeft {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.scrollLeftToRight {
+    animation: scrollLeftToRight 300s infinite linear;
+}
+
+@keyframes scrollLeftToRight {
+    from {
+        transform: translateX(-50%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+
+/* ID Specifici */
+#scroll-upper {
+    margin-top: 1.5rem;
+}
+
+#scroll-lower {
+    margin-bottom: 5rem;
+}
+
+/* Media Queries */
+
+/* Per tablet e telefoni (max 768px) */
+@media (max-width: 768px) {
+    .description {
+        font-size: 1.5rem;
+    }
+
+    #scroll-lower {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Per telefoni standard (max 576px) */
+@media (max-width: 576px) {
+    .description {
+        font-size: 1.5rem;
+    }
+
+    #scroll-lower {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Per schermi grandi (min 1025px) */
+@media (min-width: 1025px) {
+    .scroll div {
+        font-size: 1.5vw;
+    }
+}
