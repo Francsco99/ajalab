@@ -1,4 +1,3 @@
-<script>
 (function () {
     const countdownEl = document.getElementById("midnight-countdown");
     const linkEl = document.getElementById("launch-link");
@@ -6,7 +5,7 @@
     function getTonightMidnight() {
         const now = new Date();
         const midnight = new Date(now);
-        midnight.setHours(24, 0, 0, 0); // mezzanotte di oggi
+        midnight.setHours(24, 0, 0, 0);
         return midnight;
     }
 
@@ -33,4 +32,3 @@
     updateCountdown();
     const timer = setInterval(updateCountdown, 1000);
 })();
-</script>
