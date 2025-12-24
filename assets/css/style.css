@@ -98,16 +98,16 @@ letter-spacing: 0.5rem;
     animation: scrollRightToLeft 300s infinite linear;
   }
 
-    .countdown {
-        font-size: 8rem;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-    }
+  .countdown {
+    font-size: 8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+   }
 
- #launch-link {
-    font-size: 2rem;
-}
-
+   #launch-link {
+    font-size: 8rem;
+    border-radius: 4rem; 
+   }
   
   @keyframes  scrollRightToLeft {
     from {
