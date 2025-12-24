@@ -2,9 +2,6 @@
     const countdownEl = document.getElementById("midnight-countdown");
     const linkEl = document.getElementById("launch-link");
 
-    const targetTime = new Date(Date.now() + 30 * 1000);
-
-
     const targetTime = getTonightMidnight();
 
     function updateCountdown() {
