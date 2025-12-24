@@ -2,7 +2,14 @@
     const countdownEl = document.getElementById("midnight-countdown");
     const linkEl = document.getElementById("launch-link");
 
-    const targetTime = new Date(Date.now() + 30 * 1000);
+    function getTonightMidnight() {
+        const now = new Date();
+        const midnight = new Date(now);
+        midnight.setHours(24, 0, 0, 0);
+        return midnight;
+    }
+
+    const targetTime = getTonightMidnight();
 
     function updateCountdown() {
         const now = new Date();
@@ -15,8 +22,11 @@
             return;
         }
 
-        const seconds = String(Math.ceil(diff / 1000)).padStart(2, "0");
-        countdownEl.textContent = `00:${seconds}`;
+        const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, "0");
+        const minutes = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, "0");
+        const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+
+        countdownEl.textContent = `${hours}:${minutes}:${seconds}`;
     }
 
     updateCountdown();
