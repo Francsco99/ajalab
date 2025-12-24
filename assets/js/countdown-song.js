@@ -2,12 +2,8 @@
     const countdownEl = document.getElementById("midnight-countdown");
     const linkEl = document.getElementById("launch-link");
 
-    function getTonightMidnight() {
-        const now = new Date();
-        const midnight = new Date(now);
-        midnight.setHours(24, 0, 0, 0);
-        return midnight;
-    }
+    const targetTime = new Date(Date.now() + 30 * 1000);
+
 
     const targetTime = getTonightMidnight();
 
