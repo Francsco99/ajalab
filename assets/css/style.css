@@ -99,7 +99,7 @@ letter-spacing: 0.5rem;
   }
 
   .countdown {
-    font-size: 8rem;
+    font-size: calc(70vw / 4);
     font-weight: 600;
     letter-spacing: 0.1em;
    }
