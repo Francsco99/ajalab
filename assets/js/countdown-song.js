@@ -9,8 +9,8 @@
         const diff = targetTime - now;
 
         if (diff <= 0) {
-            countdownEl.textContent = "00:00";
-            linkEl.classList.remove("d-none");
+            countdownEl.style.display = "none";   // nasconde il countdown
+            linkEl.classList.remove("d-none");    // mostra il pulsante
             clearInterval(timer);
             return;
         }
