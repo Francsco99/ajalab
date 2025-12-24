@@ -121,7 +121,20 @@ letter-spacing: 0.5rem;
   .scrollLeftToRight {
     animation: scrollLeftToRight 300s infinite linear;
   }
-  
+
+@keyframes zoomBounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.bounce {
+    animation: zoomBounce 1.2s ease-in-out infinite;
+}
+
   @keyframes  scrollLeftToRight {
     from {
       transform: translateX(-50%);
