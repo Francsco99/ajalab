@@ -103,6 +103,11 @@ letter-spacing: 0.5rem;
         font-weight: 600;
         letter-spacing: 0.1em;
     }
+
+ #launch-link {
+    font-size: 1.1rem;
+}
+
   
   @keyframes  scrollRightToLeft {
     from {
