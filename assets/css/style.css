@@ -105,7 +105,7 @@ letter-spacing: 0.5rem;
    }
 
    #launch-link {
-    font-size: 8rem;
+    font-size: calc(70vw / 4);
     border-radius: 4rem; 
    }
   
