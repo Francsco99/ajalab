@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catch Me If You Can</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100dvh;
+      overflow: hidden;
+      background: #101010;
+      font-family: Arial, sans-serif;
+      touch-action: none;
+    }
+
+    #button {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: 18px 38px;
+      border: none;
+      border-radius: 100px;
+      background: #ffffff;
+      color: #111111;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: left 0.2s ease-out, top 0.2s ease-out;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="button">click me</button>
+
+  <script>
+    const button = document.getElementById("button");
+    const distance = 140;
+
+    let x = window.innerWidth / 2;
+    let y = window.innerHeight / 2;
+
+    function moveButton(pointerX, pointerY) {
+      const dx = x - pointerX;
+      const dy = y - pointerY;
+      const proximity = Math.hypot(dx, dy);
+
+      if (proximity >= distance) return;
+
+      const rect = button.getBoundingClientRect();
+      const marginX = rect.width / 2 + 12;
+      const marginY = rect.height / 2 + 12;
+
+      const minX = marginX;
+      const maxX = window.innerWidth - marginX;
+      const minY = marginY;
+      const maxY = window.innerHeight - marginY;
+
+      if (maxX < minX || maxY < minY) return;
+
+      const angle = Math.atan2(dy, dx);
+      const jump = 180;
+
+      // Prova a fuggire lontano dal cursore.
+      let newX = x + Math.cos(angle) * jump;
+      let newY = y + Math.sin(angle) * jump;
+
+      // Se raggiunge un bordo, sceglie una nuova
+      // posizione casuale dentro lo schermo.
+      if (
+        newX < minX || newX > maxX ||
+        newY < minY || newY > maxY
+      ) {
+        newX = minX + Math.random() * (maxX - minX);
+        newY = minY + Math.random() * (maxY - minY);
+      }
+
+      x = newX;
+      y = newY;
+
+      button.style.left = x + "px";
+      button.style.top = y + "px";
+    }
+
+    // Desktop: scappa quando il mouse si avvicina.
+    document.addEventListener("mousemove", (event) => {
+      moveButton(event.clientX, event.clientY);
+    });
+
+    // Mobile: scappa appena viene toccato.
+    button.addEventListener("touchstart", (event) => {
+      event.preventDefault();
+      const touch = event.touches[0];
+      moveButton(touch.clientX, touch.clientY);
+    }, { passive: false });
+
+    // Evita che il pulsante venga premuto.
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      moveButton(event.clientX, event.clientY);
+    });
+
+    // Mantiene il pulsante visibile al resize.
+    window.addEventListener("resize", () => {
+      const rect = button.getBoundingClientRect();
+      x = Math.max(
+        rect.width / 2,
+        Math.min(x, window.innerWidth - rect.width / 2)
+      );
+      y = Math.max(
+        rect.height / 2,
+        Math.min(y, window.innerHeight - rect.height / 2)
+      );
+      button.style.left = x + "px";
+      button.style.top = y + "px";
+    });
+  </script>
+</body>
+</html>
