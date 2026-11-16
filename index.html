@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Catch Me</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #FFFFFF;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        #moving-button {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            padding: 22px 44px;
+
+            background: #0011A5;
+            color: #FFFFFF;
+
+            border: none;
+            border-radius: 28px;
+
+            font-family: inherit;
+            font-size: clamp(18px, 5vw, 22px);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+
+            white-space: nowrap;
+            cursor: pointer;
+
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: none;
+
+            transition:
+                left 0.25s ease,
+                top 0.25s ease;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #moving-button {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="moving-button" type="button">
+        Ajalàb
+    </button>
+
+    <script>
+        const button = document.getElementById("moving-button");
+
+        const isTouchDevice = window.matchMedia(
+            "(hover: none), (pointer: coarse)"
+        );
+
+        let lastMove = 0;
+
+        function moveButton() {
+            const margin = 20;
+
+            const halfW = button.offsetWidth / 2;
+            const halfH = button.offsetHeight / 2;
+
+            const minX = halfW + margin;
+            const maxX = Math.max(
+                minX,
+                window.innerWidth - halfW - margin
+            );
+
+            const minY = halfH + margin;
+            const maxY = Math.max(
+                minY,
+                window.innerHeight - halfH - margin
+            );
+
+            const x = minX + Math.random() * (maxX - minX);
+            const y = minY + Math.random() * (maxY - minY);
+
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+
+            lastMove = Date.now();
+        }
+
+        // DESKTOP: il pulsante scappa quando il mouse si avvicina
+        document.addEventListener("pointermove", (event) => {
+            if (event.pointerType !== "mouse") return;
+
+            if (Date.now() - lastMove < 300) return;
+
+            const rect = button.getBoundingClientRect();
+
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            const distance = Math.hypot(
+                event.clientX - centerX,
+                event.clientY - centerY
+            );
+
+            if (distance < 130) {
+                moveButton();
+            }
+        });
+
+        // MOBILE: il pulsante scappa quando viene toccato
+        button.addEventListener("pointerdown", (event) => {
+            if (event.pointerType === "touch" ||
+                event.pointerType === "pen") {
+
+                event.preventDefault();
+                moveButton();
+            }
+        });
+    </script>
+
+</body>
+</html>
